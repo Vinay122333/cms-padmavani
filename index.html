@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="school-logo">
+                    <img src="data:image/jpeg;base64,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" alt="School Logo">
+                    <span class="school-name">Padmavani E/M School</span>
+                </div>
+                <button class="collapse-btn" id="collapseBtn">
+                    <span class="material-icons">chevron_left</span>
+                </button>
+            </div>
+            
+            <div class="sidebar-menu">
+                <div class="menu-section">
+                    <div class="menu-title">Main</div>
+                    <ul class="menu-items">
+                        <li class="menu-item active" data-page="dashboard">
+                            <span class="material-icons menu-item-icon">dashboard</span>
+                            <span class="menu-item-text">Dashboard</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-section">
+                    <div class="menu-title">Student Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item" data-page="student-profiles">
+                            <span class="material-icons menu-item-icon">people</span>
+                            <span class="menu-item-text">Student Profiles</span>
+                        </li>
+                        <li class="menu-item" data-page="attendance-records">
+                            <span class="material-icons menu-item-icon">event_available</span>
+                            <span class="menu-item-text">Attendance</span>
+                        </li>
+                        <li class="menu-item" data-page="leaves">
+                            <span class="material-icons menu-item-icon">event_busy</span>
+                            <span class="menu-item-text">Leaves</span>
+                            <span class="menu-item-badge" id="leaves-badge">3</span>
+                        </li>
+                        <li class="menu-item" data-page="achievements">
+                            <span class="material-icons menu-item-icon">emoji_events</span>
+                            <span class="menu-item-text">Achievements</span>
+                        </li>
+                        <li class="menu-item" data-page="certificates">
+                            <span class="material-icons menu-item-icon">description</span>
+                            <span class="menu-item-text">Certificates</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-section">
+                    <div class="menu-title">Academic Management</div>
+                    <ul class="menu-items">
+                        <li class="menu-item" data-page="exams">
+                            <span class="material-icons menu-item-icon">assignment</span>
+                            <span class="menu-item-text">Exams</span>
+                        </li>
+                        <li class="menu-item" data-page="report-cards">
+                            <span class="material-icons menu-item-icon">school</span>
+                            <span class="menu-item-text">Report Cards</span>
+                        </li>
+                        <li class="menu-item" data-page="daily-diary">
+                            <span class="material-icons menu-item-icon">book</span>
+                            <span class="menu-item-text">Daily Diary</span>
+                        </li>
+                        <li class="menu-item" data-page="study-materials">
+                            <span class="material-icons menu-item-icon">folder_open</span>
+                            <span class="menu-item-text">Study Materials</span>
+                        </li>
+                        <li class="menu-item" data-page="video-classes">
+                            <span class="material-icons menu-item-icon">ondemand_video</span>
+                            <span class="menu-item-text">Video Classes</span>
+                        </li>
+                        <li class="menu-item" data-page="class-timetables">
+                            <span class="material-icons menu-item-icon">schedule</span>
+                            <span class="menu-item-text">Class Timetables</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-section">
+                    <div class="menu-title">Financials</div>
+                    <ul class="menu-items">
+                        <li class="menu-item" data-page="fees">
+                            <span class="material-icons menu-item-icon">payments</span>
+                            <span class="menu-item-text">Fees</span>
+                        </li>
+                        <li class="menu-item" data-page="orders">
+                            <span class="material-icons menu-item-icon">shopping_cart</span>
+                            <span class="menu-item-text">Orders</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-section">
+                    <div class="menu-title">Communications</div>
+                    <ul class="menu-items">
+                        <li class="menu-item" data-page="announcements">
+                            <span class="material-icons menu-item-icon">announcement</span>
+                            <span class="menu-item-text">Announcements</span>
+                        </li>
+                        <li class="menu-item" data-page="feedback">
+                            <span class="material-icons menu-item-icon">feedback</span>
+                            <span class="menu-item-text">Feedback</span>
+                        </li>
+                        <li class="menu-item" data-page="holidays">
+                            <span class="material-icons menu-item-icon">beach_access</span>
+                            <span class="menu-item-text">Holidays</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-section">
+                    <div class="menu-title">Settings</div>
+                    <ul class="menu-items">
+                        <li class="menu-item" data-page="system-settings">
+                            <span class="material-icons menu-item-icon">settings</span>
+                            <span class="menu-item-text">System Settings</span>
+                        </li>
+                        <li class="menu-item" data-page="audit-logs">
+                            <span class="material-icons menu-item-icon">history</span>
+                            <span class="menu-item-text">Audit Logs</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content Area -->
+        <div class="main-content" id="mainContent">
+            <!-- Top Navigation Bar -->
+            <div class="top-nav">
+                <button class="nav-action-btn" id="mobileMenuBtn">
+                    <span class="material-icons">menu</span>
+                </button>
+                
+                <div class="search-bar">
+                    <span class="material-icons search-icon">search</span>
+                    <input type="text" placeholder="Search..." id="globalSearchBar">
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="nav-action-btn" id="themeToggle">
+                        <span class="material-icons">brightness_4</span>
+                    </button>
+                    
+                    <button class="nav-action-btn">
+                        <span class="material-icons">notifications</span>
+                        <span class="notification-badge" id="notification-badge">5</span>
+                    </button>
+                    
+                    <div class="user-profile">
+                        <div class="user-avatar">AD</div>
+                        <div class="user-info">
+                            <div class="user-name">Admin User</div>
+                            <div class="user-role">Administrator</div>
+                        </div>
+                        <span class="material-icons">arrow_drop_down</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Area -->
+            <div class="content-area" id="contentArea">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Student Modal -->
+    <div class="modal-overlay" id="addStudentModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addStudentModalTitle">Add New Student</h2>
+                <button class="modal-close" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="studentForm">
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="studentId">Student ID</label>
+                                <input type="text" class="form-control" id="studentId" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="rollNumber">Roll Number</label>
+                                <input type="number" class="form-control" id="rollNumber" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="studentName">Full Name</label>
+                                <input type="text" class="form-control" id="studentName" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="dateOfBirth">Date of Birth</label>
+                                <input type="date" class="form-control" id="dateOfBirth" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="class">Class</label>
+                                <select class="form-control" id="class" required>
+                                    <option value="">Select Class</option>
+                                    <option value="1">Class 1</option>
+                                    <option value="2">Class 2</option>
+                                    <option value="3">Class 3</option>
+                                    <option value="4">Class 4</option>
+                                    <option value="5">Class 5</option>
+                                    <option value="6">Class 6</option>
+                                    <option value="7">Class 7</option>
+                                    <option value="8">Class 8</option>
+                                    <option value="9">Class 9</option>
+                                    <option value="10">Class 10</option>
+                                    <option value="11">Class 11</option>
+                                    <option value="12">Class 12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="section">Section</label>
+                                <select class="form-control" id="section" required>
+                                    <option value="">Select Section</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="gender">Gender</label>
+                                <select class="form-control" id="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="bloodGroup">Blood Group</label>
+                                <select class="form-control" id="bloodGroup">
+                                    <option value="">Select Blood Group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="address">Address</label>
+                        <textarea class="form-control" id="address" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="parentName">Parent/Guardian Name</label>
+                                <input type="text" class="form-control" id="parentName" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="phoneNumber">Phone Number</label>
+                                <input type="tel" class="form-control" id="phoneNumber" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="enrollmentDate">Enrollment Date</label>
+                                <input type="date" class="form-control" id="enrollmentDate" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="totalFee">Total Fee (₹)</label>
+                                <input type="number" class="form-control" id="totalFee" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="feeConcession">Fee Concession (₹)</label>
+                                <input type="number" class="form-control" id="feeConcession" value="0">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveStudentBtn">Save Student</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Attendance Modal -->
+    <div class="modal-overlay" id="attendanceModal">
+        <div class="modal" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2 class="modal-title">Mark Attendance</h2>
+                <button class="modal-close" id="closeAttendanceModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+                    <div class="filter-group">
+                        <label for="attendanceDate" class="form-label">Date:</label>
+                        <input type="date" id="attendanceDate" class="form-control">
+                    </div>
+                    <div class="filter-group">
+                        <label for="attendanceClass" class="form-label">Class:</label>
+                        <select id="attendanceClass" class="form-control">
+                            <option value="">All Classes</option>
+                            <option value="1">Class 1</option>
+                            <option value="2">Class 2</option>
+                            <option value="3">Class 3</option>
+                            <option value="4">Class 4</option>
+                            <option value="5">Class 5</option>
+                            <option value="6">Class 6</option>
+                            <option value="7">Class 7</option>
+                            <option value="8">Class 8</option>
+                            <option value="9">Class 9</option>
+                            <option value="10">Class 10</option>
+                            <option value="11">Class 11</option>
+                            <option value="12">Class 12</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="attendanceSection" class="form-label">Section:</label>
+                        <select id="attendanceSection" class="form-control">
+                            <option value="">All Sections</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Class</th>
+                                <th>Section</th>
+                                <th>Status</th>
+                                <th>Morning</th>
+                                <th>Afternoon</th>
+                                <th>Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendanceTableBody">
+                            <!-- Attendance rows will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="form-actions" style="margin-top: 20px; justify-content: space-between;">
+                    <div>
+                        <button class="btn btn-outline">
+                            <span class="material-icons">file_download</span>
+                            Export
+                        </button>
+                    </div>
+                    <div>
+                        <button class="btn btn-outline" id="resetAttendanceBtn">
+                            <span class="material-icons">refresh</span>
+                            Reset
+                        </button>
+                        <button class="btn btn-primary" id="saveAttendanceBtn">
+                            <span class="material-icons">save</span>
+                            Save Attendance
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Student Details Modal -->
+    <div class="modal-overlay" id="viewStudentModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Student Details</h2>
+                <button class="modal-close" id="closeViewStudentModal">&times;</button>
+            </div>
+            <div class="modal-body" id="viewStudentModalBody">
+                <!-- Student details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Record Payment Modal -->
+    <div class="modal-overlay" id="recordPaymentModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="recordPaymentModalTitle">Record Payment</h2>
+                <button class="modal-close" id="closeRecordPaymentModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label class="form-label" for="paymentStudentId">Student ID</label>
+                        <input type="text" class="form-control" id="paymentStudentId" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="paymentAmount">Amount (₹)</label>
+                        <input type="number" class="form-control" id="paymentAmount" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="paymentDate">Payment Date</label>
+                        <input type="date" class="form-control" id="paymentDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="paymentMethod">Payment Method</label>
+                        <select class="form-control" id="paymentMethod" required>
+                            <option value="">Select Method</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Online">Online</option>
+                            <option value="Bank Transfer">Bank Transfer</option>
+                            <option value="Cheque">Cheque</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="paymentDescription">Description</label>
+                        <textarea class="form-control" id="paymentDescription" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="paymentFeeType">Fee Type</label>
+                        <input type="text" class="form-control" id="paymentFeeType" placeholder="e.g., Tuition, Exam, Transport">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelPaymentBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="savePaymentBtn">Record Payment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div class="modal-overlay" id="receiptModal">
+        <div class="modal" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2 class="modal-title">Payment Receipt</h2>
+                <button class="modal-close" id="closeReceiptModal">&times;</button>
+            </div>
+            <div class="modal-body" id="receiptModalBody">
+                <!-- Receipt content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="printReceiptBtn">
+                    <span class="material-icons">print</span> Print
+                </button>
+                <button class="btn btn-primary" id="downloadReceiptBtn">
+                    <span class="material-icons">download</span> Download PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Leave Modal -->
+    <div class="modal-overlay" id="addLeaveModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addLeaveModalTitle">Add New Leave Application</h2>
+                <button class="modal-close" id="closeLeaveModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="leaveForm">
+                    <div class="form-group">
+                        <label class="form-label" for="leaveStudentId">Student ID</label>
+                        <input type="text" class="form-control" id="leaveStudentId" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="leaveType">Leave Type</label>
+                        <select class="form-control" id="leaveType" required>
+                            <option value="">Select Leave Type</option>
+                            <option value="Sick Leave">Sick Leave</option>
+                            <option value="Casual Leave">Casual Leave</option>
+                            <option value="Family Event">Family Event</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="leaveStartDate">Start Date</label>
+                                <input type="date" class="form-control" id="leaveStartDate" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="leaveEndDate">End Date</label>
+                                <input type="date" class="form-control" id="leaveEndDate" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="leaveReason">Reason</label>
+                        <textarea class="form-control" id="leaveReason" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="leaveStatus">Status</label>
+                        <select class="form-control" id="leaveStatus" required>
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelLeaveBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveLeaveBtn">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Achievement Modal -->
+    <div class="modal-overlay" id="addAchievementModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addAchievementModalTitle">Add New Achievement</h2>
+                <button class="modal-close" id="closeAchievementModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="achievementForm">
+                    <div class="form-group">
+                        <label class="form-label" for="achievementStudentId">Student ID</label>
+                        <input type="text" class="form-control" id="achievementStudentId" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="achievementStudentName">Student Name</label>
+                        <input type="text" class="form-control" id="achievementStudentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="achievementTitle">Title</label>
+                        <input type="text" class="form-control" id="achievementTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="achievementDescription">Description</label>
+                        <textarea class="form-control" id="achievementDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="achievementDate">Date</label>
+                                <input type="date" class="form-control" id="achievementDate" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="achievementType">Type</label>
+                                <input type="text" class="form-control" id="achievementType" placeholder="e.g., Sports, Academic, Arts" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="achievementTags">Tags (comma-separated)</label>
+                        <input type="text" class="form-control" id="achievementTags" placeholder="e.g., football, competition, gold medal">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelAchievementBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveAchievementBtn">Save Achievement</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Certificate Modal -->
+    <div class="modal-overlay" id="addCertificateModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addCertificateModalTitle">Add New Certificate</h2>
+                <button class="modal-close" id="closeCertificateModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="certificateForm">
+                    <div class="form-group">
+                        <label class="form-label" for="certificateStudentId">Student ID</label>
+                        <input type="text" class="form-control" id="certificateStudentId" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="certificateTitle">Title</label>
+                        <input type="text" class="form-control" id="certificateTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="certificateOrganization">Issuing Organization</label>
+                        <input type="text" class="form-control" id="certificateOrganization" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="certificateIssueDate">Issue Date</label>
+                        <input type="date" class="form-control" id="certificateIssueDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="certificateUrl">Certificate URL (Optional)</label>
+                        <input type="url" class="form-control" id="certificateUrl" placeholder="Link to online certificate">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelCertificateBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveCertificateBtn">Save Certificate</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Exam Modal -->
+    <div class="modal-overlay" id="addExamModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addExamModalTitle">Add New Exam</h2>
+                <button class="modal-close" id="closeExamModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="examForm">
+                    <div class="form-group">
+                        <label class="form-label" for="examName">Exam Name</label>
+                        <input type="text" class="form-control" id="examName" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="examClass">Class</label>
+                                <select class="form-control" id="examClass" required>
+                                    <option value="">Select Class</option>
+                                    <option value="1">Class 1</option><option value="2">Class 2</option><option value="3">Class 3</option><option value="4">Class 4</option><option value="5">Class 5</option><option value="6">Class 6</option><option value="7">Class 7</option><option value="8">Class 8</option><option value="9">Class 9</option><option value="10">Class 10</option><option value="11">Class 11</option><option value="12">Class 12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="examSection">Section (Optional)</label>
+                                <select class="form-control" id="examSection">
+                                    <option value="">All Sections</option>
+                                    <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="examSubject">Subject</label>
+                        <input type="text" class="form-control" id="examSubject" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="examTopic">Topic (Optional)</label>
+                        <input type="text" class="form-control" id="examTopic">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="examDate">Date</label>
+                                <input type="date" class="form-control" id="examDate" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="examTime">Time</label>
+                                <input type="time" class="form-control" id="examTime" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="examRoom">Room (Optional)</label>
+                                <input type="text" class="form-control" id="examRoom">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="examTotalMarks">Total Marks</label>
+                                <input type="number" class="form-control" id="examTotalMarks" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelExamBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveExamBtn">Save Exam</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Report Card Modal -->
+    <div class="modal-overlay" id="addReportCardModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addReportCardModalTitle">Add New Report Card</h2>
+                <button class="modal-close" id="closeReportCardModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="reportCardForm">
+                    <div class="form-group">
+                        <label class="form-label" for="reportCardStudentId">Student ID</label>
+                        <input type="text" class="form-control" id="reportCardStudentId" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="reportCardAcademicYear">Academic Year</label>
+                                <input type="text" class="form-control" id="reportCardAcademicYear" placeholder="e.g., 2023-2024" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="reportCardTermSemester">Term/Semester</label>
+                                <input type="text" class="form-control" id="reportCardTermSemester" placeholder="e.g., Term 1, Semester 2" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="reportCardDateGenerated">Date Generated</label>
+                        <input type="date" class="form-control" id="reportCardDateGenerated" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="reportCardOverallPercentage">Overall Percentage (%)</label>
+                                <input type="number" class="form-control" id="reportCardOverallPercentage" step="0.01" min="0" max="100">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="reportCardOverallGrade">Overall Grade</label>
+                                <input type="text" class="form-control" id="reportCardOverallGrade" placeholder="e.g., A+, B">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="reportCardTeacherRemarks">Teacher Remarks</label>
+                        <textarea class="form-control" id="reportCardTeacherRemarks" rows="3"></textarea>
+                    </div>
+                    <!-- For simplicity, subjects are not added here. They would be in a separate modal/section. -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelReportCardBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveReportCardBtn">Save Report Card</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Daily Diary Modal -->
+    <div class="modal-overlay" id="addDiaryModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addDiaryModalTitle">Add New Daily Diary Entry</h2>
+                <button class="modal-close" id="closeDiaryModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="diaryForm">
+                    <div class="form-group">
+                        <label class="form-label" for="diaryDate">Date</label>
+                        <input type="date" class="form-control" id="diaryDate" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="diaryClass">Class</label>
+                                <select class="form-control" id="diaryClass" required>
+                                    <option value="">Select Class</option>
+                                    <option value="1">Class 1</option><option value="2">Class 2</option><option value="3">Class 3</option><option value="4">Class 4</option><option value="5">Class 5</option><option value="6">Class 6</option><option value="7">Class 7</option><option value="8">Class 8</option><option value="9">Class 9</option><option value="10">Class 10</option><option value="11">Class 11</option><option value="12">Class 12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="diarySection">Section</label>
+                                <select class="form-control" id="diarySection" required>
+                                    <option value="">Select Section</option>
+                                    <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="diarySubject">Subject</label>
+                        <input type="text" class="form-control" id="diarySubject" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="diaryContent">Content</label>
+                        <textarea class="form-control" id="diaryContent" rows="5" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelDiaryBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveDiaryBtn">Save Entry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Study Material Modal -->
+    <div class="modal-overlay" id="addStudyMaterialModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addStudyMaterialModalTitle">Add New Study Material</h2>
+                <button class="modal-close" id="closeStudyMaterialModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="studyMaterialForm">
+                    <div class="form-group">
+                        <label class="form-label" for="studyMaterialTitle">Title</label>
+                        <input type="text" class="form-control" id="studyMaterialTitle" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="studyMaterialClass">Class</label>
+                                <select class="form-control" id="studyMaterialClass" required>
+                                    <option value="">Select Class</option>
+                                    <option value="1">Class 1</option><option value="2">Class 2</option><option value="3">Class 3</option><option value="4">Class 4</option><option value="5">Class 5</option><option value="6">Class 6</option><option value="7">Class 7</option><option value="8">Class 8</option><option value="9">Class 9</option><option value="10">Class 10</option><option value="11">Class 11</option><option value="12">Class 12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="studyMaterialSubject">Subject</label>
+                                <input type="text" class="form-control" id="studyMaterialSubject" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="studyMaterialFileUrl">File URL (PDF, Doc, etc.)</label>
+                        <input type="url" class="form-control" id="studyMaterialFileUrl" placeholder="https://example.com/material.pdf" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelStudyMaterialBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveStudyMaterialBtn">Save Material</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Video Class Modal -->
+    <div class="modal-overlay" id="addVideoClassModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addVideoClassModalTitle">Add New Video Class</h2>
+                <button class="modal-close" id="closeVideoClassModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="videoClassForm">
+                    <div class="form-group">
+                        <label class="form-label" for="videoClassTitle">Title</label>
+                        <input type="text" class="form-control" id="videoClassTitle" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="videoClassClass">Class</label>
+                                <select class="form-control" id="videoClassClass" required>
+                                    <option value="">Select Class</option>
+                                    <option value="1">Class 1</option><option value="2">Class 2</option><option value="3">Class 3</option><option value="4">Class 4</option><option value="5">Class 5</option><option value="6">Class 6</option><option value="7">Class 7</option><option value="8">Class 8</option><option value="9">Class 9</option><option value="10">Class 10</option><option value="11">Class 11</option><option value="12">Class 12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="videoClassSubject">Subject</label>
+                                <input type="text" class="form-control" id="videoClassSubject" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="videoClassUrl">Video URL (YouTube, Vimeo, etc.)</label>
+                        <input type="url" class="form-control" id="videoClassUrl" placeholder="https://www.youtube.com/watch?v=example" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelVideoClassBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveVideoClassBtn">Save Video Class</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Timetable Modal -->
+    <div class="modal-overlay" id="addTimetableModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addTimetableModalTitle">Add New Class Timetable Link</h2>
+                <button class="modal-close" id="closeTimetableModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="timetableForm">
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="timetableClass">Class</label>
+                                <select class="form-control" id="timetableClass" required>
+                                    <option value="">Select Class</option>
+                                    <option value="1">Class 1</option><option value="2">Class 2</option><option value="3">Class 3</option><option value="4">Class 4</option><option value="5">Class 5</option><option value="6">Class 6</option><option value="7">Class 7</option><option value="8">Class 8</option><option value="9">Class 9</option><option value="10">Class 10</option><option value="11">Class 11</option><option value="12">Class 12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="timetableSection">Section</label>
+                                <select class="form-control" id="timetableSection" required>
+                                    <option value="">Select Section</option>
+                                    <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="timetableExcelLink">Excel Sheet Link</label>
+                        <input type="url" class="form-control" id="timetableExcelLink" placeholder="Link to timetable Excel file" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelTimetableBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveTimetableBtn">Save Timetable</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Order Modal -->
+    <div class="modal-overlay" id="addOrderModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addOrderModalTitle">Add New Order</h2>
+                <button class="modal-close" id="closeOrderModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label class="form-label" for="orderStudentId">Student ID</label>
+                        <input type="text" class="form-control" id="orderStudentId" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="orderStudentName">Student Name</label>
+                        <input type="text" class="form-control" id="orderStudentName" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="orderClass">Class</label>
+                                <select class="form-control" id="orderClass" required>
+                                    <option value="">Select Class</option>
+                                    <option value="1">Class 1</option><option value="2">Class 2</option><option value="3">Class 3</option><option value="4">Class 4</option><option value="5">Class 5</option><option value="6">Class 6</option><option value="7">Class 7</option><option value="8">Class 8</option><option value="9">Class 9</option><option value="10">Class 10</option><option value="11">Class 11</option><option value="12">Class 12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="orderSection">Section</label>
+                                <select class="form-control" id="orderSection" required>
+                                    <option value="">Select Section</option>
+                                    <option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="orderType">Order Type</label>
+                        <input type="text" class="form-control" id="orderType" placeholder="e.g., Uniform, Stationery" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="orderItem">Item Name</label>
+                        <input type="text" class="form-control" id="orderItem" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="orderQuantity">Quantity</label>
+                                <input type="number" class="form-control" id="orderQuantity" min="1" value="1" required>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="orderPrice">Price (₹)</label>
+                                <input type="number" class="form-control" id="orderPrice" step="0.01" min="0" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="orderDate">Order Date</label>
+                        <input type="date" class="form-control" id="orderDate" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelOrderBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveOrderBtn">Save Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Announcement Modal -->
+    <div class="modal-overlay" id="addAnnouncementModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addAnnouncementModalTitle">Add New Announcement</h2>
+                <button class="modal-close" id="closeAnnouncementModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="announcementForm">
+                    <div class="form-group">
+                        <label class="form-label" for="announcementTitle">Title</label>
+                        <input type="text" class="form-control" id="announcementTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="announcementMessage">Message</label>
+                        <textarea class="form-control" id="announcementMessage" rows="5" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="announcementType">Type (Optional)</label>
+                                <input type="text" class="form-control" id="announcementType" placeholder="e.g., Event, Urgent">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label" for="announcementStudentId">Target Student ID (Optional)</label>
+                                <input type="text" class="form-control" id="announcementStudentId" placeholder="Leave blank for common announcement">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="announcementIsCommon">
+                        <label class="form-label" for="announcementIsCommon" style="display: inline; margin-left: 10px;">Common Announcement (visible to all)</label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelAnnouncementBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveAnnouncementBtn">Publish Announcement</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Feedback Modal -->
+    <div class="modal-overlay" id="addFeedbackModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addFeedbackModalTitle">Submit Feedback</h2>
+                <button class="modal-close" id="closeFeedbackModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="feedbackForm">
+                    <div class="form-group">
+                        <label class="form-label" for="feedbackName">Your Name (Optional)</label>
+                        <input type="text" class="form-control" id="feedbackName">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="feedbackEmail">Your Email (Optional)</label>
+                        <input type="email" class="form-control" id="feedbackEmail">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="feedbackCategory">Category</label>
+                        <select class="form-control" id="feedbackCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="Suggestion">Suggestion</option>
+                            <option value="Complaint">Complaint</option>
+                            <option value="Bug Report">Bug Report</option>
+                            <option value="Question">Question</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="feedbackMessage">Message</label>
+                        <textarea class="form-control" id="feedbackMessage" rows="5" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelFeedbackBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveFeedbackBtn">Submit Feedback</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Holiday Modal -->
+    <div class="modal-overlay" id="addHolidayModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="addHolidayModalTitle">Add New Holiday</h2>
+                <button class="modal-close" id="closeHolidayModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="holidayForm">
+                    <div class="form-group">
+                        <label class="form-label" for="holidayDate">Date</label>
+                        <input type="date" class="form-control" id="holidayDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="holidayTitle">Title</label>
+                        <input type="text" class="form-control" id="holidayTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="holidayDescription">Description (Optional)</label>
+                        <textarea class="form-control" id="holidayDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="holidayType">Type (Optional)</label>
+                        <input type="text" class="form-control" id="holidayType" placeholder="e.g., National, School Event">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelHolidayBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="saveHolidayBtn">Save Holiday</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Generic Message Box -->
+    <div class="message-box-overlay" id="messageBoxOverlay">
+        <div class="message-box">
+            <span class="material-icons message-box-icon" id="messageBoxIcon"></span>
+            <h3 class="message-box-title" id="messageBoxTitle"></h3>
+            <p class="message-box-text" id="messageBoxText"></p>
+            <div class="message-box-actions">
+                <button class="btn btn-primary" id="messageBoxOkBtn">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- <script src="script.js"></script> -->
+        <script src="config.js"></script>
+        <script src="utils.js"></script>
+        <script src="dashboard.js"></script>
+        <script src="table.js"></script>
+        <script src="pages.js"></script>
+        <script src="events.js"></script>
+        <script src="all-features-management.js"></script>
+</body>
+</html>
